@@ -1,7 +1,7 @@
 export default {
   footer: {
     onlinePreview: 'Xem Trước',
-    onlineDocument: 'Tài Liệu'
+    onlineDocument: 'Tài Liệu',
   },
   header: {
     // user dropdown

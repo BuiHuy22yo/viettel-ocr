@@ -1,91 +1,96 @@
 <template>
   <PageWrapper :contentStyle="{ margin: 0 }">
     <div class="page">
-    <div class="page-header">
-      <div>
-        <div class="page-title">{{ t('ocr.apiKeys.title') }}</div>
-        <div class="page-subtitle">{{ t('ocr.apiKeys.subtitle') }}</div>
+      <div class="page-header">
+        <div>
+          <div class="page-title">{{ t('ocr.apiKeys.title') }}</div>
+          <div class="page-subtitle">{{ t('ocr.apiKeys.subtitle') }}</div>
+        </div>
+        <Button type="primary" @click="showCreate = true">
+          <Icon icon="ion:add-outline" :size="16" class="btn-icon" />
+          {{ t('ocr.apiKeys.create') }}
+        </Button>
       </div>
-      <Button type="primary" @click="showCreate = true">
-        <Icon icon="ion:add-outline" :size="16" class="btn-icon" />
-        {{ t('ocr.apiKeys.create') }}
-      </Button>
-    </div>
 
-    <Row :gutter="[12, 12]" class="section-row">
-      <Col v-for="stat in stats" :key="stat.label" :xs="24" :sm="12" :lg="8">
-        <Card class="section-card">
-          <div class="kpi-card">
-            <div>
-              <div class="kpi-value">{{ stat.value }}</div>
-              <div class="kpi-label">{{ stat.label }}</div>
+      <Row :gutter="[12, 12]" class="section-row">
+        <Col v-for="stat in stats" :key="stat.label" :xs="24" :sm="12" :lg="8">
+          <Card class="section-card">
+            <div class="kpi-card">
+              <div>
+                <div class="kpi-value">{{ stat.value }}</div>
+                <div class="kpi-label">{{ stat.label }}</div>
+              </div>
+              <Icon :icon="stat.icon" :size="20" />
             </div>
-            <Icon :icon="stat.icon" :size="20" />
-          </div>
-        </Card>
-      </Col>
-    </Row>
+          </Card>
+        </Col>
+      </Row>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.apiKeys.listTitle') }}</div>
-      <BasicTable
-        :columns="columns"
-        :dataSource="keys"
-        rowKey="id"
-        :pagination="false"
-        :useSearchForm="false"
-        :showTableSetting="false"
-        :showIndexColumn="false"
-        bordered
-      >
-        <template #bodyCell="{ column, record }">
-          <template v-if="column.key === 'key'">
-            <div class="key-cell">
-              <code>{{ record.visible ? record.key : maskKey(record.key) }}</code>
-              <Button type="text" size="small" @click="record.visible = !record.visible">
-                <Icon
-                  :icon="record.visible ? 'ion:eye-off-outline' : 'ion:eye-outline'"
-                  :size="14"
-                />
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.apiKeys.listTitle') }}</div>
+        <BasicTable
+          :columns="columns"
+          :dataSource="keys"
+          rowKey="id"
+          :pagination="false"
+          :useSearchForm="false"
+          :showTableSetting="false"
+          :showIndexColumn="false"
+          bordered
+        >
+          <template #bodyCell="{ column, record }">
+            <template v-if="column.key === 'key'">
+              <div class="key-cell">
+                <code>{{ record.visible ? record.key : maskKey(record.key) }}</code>
+                <Button type="text" size="small" @click="record.visible = !record.visible">
+                  <Icon
+                    :icon="record.visible ? 'ion:eye-off-outline' : 'ion:eye-outline'"
+                    :size="14"
+                  />
+                </Button>
+                <Button type="text" size="small" @click="copyKey(record.key)">
+                  <Icon icon="ion:copy-outline" :size="14" />
+                </Button>
+              </div>
+            </template>
+            <template v-else-if="column.key === 'status'">
+              <Tag :color="record.status === 'active' ? 'green' : 'red'">
+                {{
+                  record.status === 'active'
+                    ? t('ocr.apiKeys.statusActive')
+                    : t('ocr.apiKeys.statusRevoked')
+                }}
+              </Tag>
+            </template>
+            <template v-else-if="column.key === 'model'">
+              <Tag>{{ modelLabel(record.model) }}</Tag>
+            </template>
+            <template v-else-if="column.key === 'rate'">{{
+              t('ocr.apiKeys.rateUnit', { rate: record.rate })
+            }}</template>
+            <template v-else-if="column.key === 'lastUsed'">
+              <div class="last-used">
+                <Icon icon="ion:time-outline" :size="14" />
+                <span>{{ record.lastUsed || t('ocr.apiKeys.lastUsedEmpty') }}</span>
+              </div>
+            </template>
+            <template v-else-if="column.key === 'action'">
+              <Button
+                v-if="record.status === 'active'"
+                type="text"
+                danger
+                @click="revokeKey(record)"
+              >
+                {{ t('ocr.apiKeys.actionRevoke') }}
               </Button>
-              <Button type="text" size="small" @click="copyKey(record.key)">
-                <Icon icon="ion:copy-outline" :size="14" />
-              </Button>
-            </div>
+            </template>
           </template>
-          <template v-else-if="column.key === 'status'">
-            <Tag :color="record.status === 'active' ? 'green' : 'red'">
-              {{
-                record.status === 'active'
-                  ? t('ocr.apiKeys.statusActive')
-                  : t('ocr.apiKeys.statusRevoked')
-              }}
-            </Tag>
-          </template>
-          <template v-else-if="column.key === 'model'">
-            <Tag>{{ modelLabel(record.model) }}</Tag>
-          </template>
-          <template v-else-if="column.key === 'rate'">{{
-            t('ocr.apiKeys.rateUnit', { rate: record.rate })
-          }}</template>
-          <template v-else-if="column.key === 'lastUsed'">
-            <div class="last-used">
-              <Icon icon="ion:time-outline" :size="14" />
-              <span>{{ record.lastUsed || t('ocr.apiKeys.lastUsedEmpty') }}</span>
-            </div>
-          </template>
-          <template v-else-if="column.key === 'action'">
-            <Button v-if="record.status === 'active'" type="text" danger @click="revokeKey(record)">
-              {{ t('ocr.apiKeys.actionRevoke') }}
-            </Button>
-          </template>
-        </template>
-      </BasicTable>
-    </Card>
+        </BasicTable>
+      </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.apiKeys.guideTitle') }}</div>
-      <pre class="code-block">
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.apiKeys.guideTitle') }}</div>
+        <pre class="code-block">
 curl -X POST https://api.viettelpost-ocr.vn/v1/ocr/extract \
   -H "Authorization: Bearer vtp_live_sk_YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -93,26 +98,26 @@ curl -X POST https://api.viettelpost-ocr.vn/v1/ocr/extract \
     "image_url": "https://example.com/waybill.jpg",
     "model": "auto"
   }'</pre
-      >
-      <div class="note">{{ t('ocr.common.noteMock') }}</div>
-    </Card>
+        >
+        <div class="note">{{ t('ocr.common.noteMock') }}</div>
+      </Card>
 
-    <BasicModal v-model:open="showCreate" :title="t('ocr.apiKeys.modalTitle')" @ok="createKey">
-      <div class="form-grid">
-        <div>
-          <div class="form-label">{{ t('ocr.apiKeys.formName') }}</div>
-          <Input v-model:value="form.name" :placeholder="t('ocr.apiKeys.formNamePlaceholder')" />
+      <BasicModal v-model:open="showCreate" :title="t('ocr.apiKeys.modalTitle')" @ok="createKey">
+        <div class="form-grid">
+          <div>
+            <div class="form-label">{{ t('ocr.apiKeys.formName') }}</div>
+            <Input v-model:value="form.name" :placeholder="t('ocr.apiKeys.formNamePlaceholder')" />
+          </div>
+          <div>
+            <div class="form-label">{{ t('ocr.apiKeys.formRate') }}</div>
+            <Input v-model:value="form.rateLimit" type="number" />
+          </div>
+          <div>
+            <div class="form-label">{{ t('ocr.apiKeys.formModel') }}</div>
+            <Select v-model:value="form.model" :options="modelOptions" />
+          </div>
         </div>
-        <div>
-          <div class="form-label">{{ t('ocr.apiKeys.formRate') }}</div>
-          <Input v-model:value="form.rateLimit" type="number" />
-        </div>
-        <div>
-          <div class="form-label">{{ t('ocr.apiKeys.formModel') }}</div>
-          <Select v-model:value="form.model" :options="modelOptions" />
-        </div>
-      </div>
-    </BasicModal>
+      </BasicModal>
     </div>
   </PageWrapper>
 </template>

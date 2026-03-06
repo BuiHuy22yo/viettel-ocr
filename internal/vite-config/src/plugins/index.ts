@@ -47,7 +47,6 @@ async function createPlugins({ isBuild, root, enableMock, compress, enableAnalyz
     vitePlugins.push(configVisualizerConfig());
   }
 
-
   return vitePlugins;
 }
 

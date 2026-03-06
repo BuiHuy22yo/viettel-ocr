@@ -1,65 +1,65 @@
 <template>
   <PageWrapper :contentStyle="{ margin: 0 }">
     <div class="page">
-    <div class="page-header">
-      <div>
-        <div class="page-title">{{ t('ocr.fraud.title') }}</div>
-        <div class="page-subtitle">{{ t('ocr.fraud.subtitle') }}</div>
-      </div>
-      <div class="header-meta">
-        <span class="meta-label">{{ t('ocr.fraud.pending') }}:</span>
-        <span class="meta-value tone-error">{{ pendingCount }}</span>
-      </div>
-    </div>
-
-    <Row :gutter="[12, 12]" class="section-row">
-      <Col v-for="item in kpis" :key="item.label" :xs="24" :sm="12" :lg="6">
-        <Card class="section-card">
-          <div class="kpi-card">
-            <div>
-              <div class="kpi-value">{{ item.value }}</div>
-              <div class="kpi-label">{{ item.label }}</div>
-            </div>
-            <div class="kpi-icon" :class="item.tone">
-              <Icon :icon="item.icon" :size="20" />
-            </div>
-          </div>
-        </Card>
-      </Col>
-    </Row>
-
-    <Row :gutter="[12, 12]" class="section-row">
-      <Col :xs="24" :lg="12">
-        <Card class="section-card">
-          <div class="section-title">{{ t('ocr.fraud.trendTitle') }}</div>
-          <div ref="trendChartRef" class="chart-box"></div>
-        </Card>
-      </Col>
-      <Col :xs="24" :lg="12">
-        <Card class="section-card">
-          <div class="section-title">{{ t('ocr.fraud.regionTitle') }}</div>
-          <div ref="regionChartRef" class="chart-box"></div>
-        </Card>
-      </Col>
-    </Row>
-
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.fraud.alertsTitle') }}</div>
-      <div class="alert-list">
-        <div v-for="alert in alerts" :key="alert.id" class="alert-item">
-          <div class="alert-left">
-            <div class="alert-icon" :class="alert.tone">
-              <Icon :icon="alert.icon" :size="18" />
-            </div>
-            <div>
-              <div class="alert-title">{{ alert.orderId }}</div>
-              <div class="alert-desc">{{ alert.desc }}</div>
-            </div>
-          </div>
-          <Tag :color="alert.risk >= 80 ? 'red' : 'orange'">{{ alert.risk }}%</Tag>
+      <div class="page-header">
+        <div>
+          <div class="page-title">{{ t('ocr.fraud.title') }}</div>
+          <div class="page-subtitle">{{ t('ocr.fraud.subtitle') }}</div>
+        </div>
+        <div class="header-meta">
+          <span class="meta-label">{{ t('ocr.fraud.pending') }}:</span>
+          <span class="meta-value tone-error">{{ pendingCount }}</span>
         </div>
       </div>
-    </Card>
+
+      <Row :gutter="[12, 12]" class="section-row">
+        <Col v-for="item in kpis" :key="item.label" :xs="24" :sm="12" :lg="6">
+          <Card class="section-card">
+            <div class="kpi-card">
+              <div>
+                <div class="kpi-value">{{ item.value }}</div>
+                <div class="kpi-label">{{ item.label }}</div>
+              </div>
+              <div class="kpi-icon" :class="item.tone">
+                <Icon :icon="item.icon" :size="20" />
+              </div>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+
+      <Row :gutter="[12, 12]" class="section-row">
+        <Col :xs="24" :lg="12">
+          <Card class="section-card">
+            <div class="section-title">{{ t('ocr.fraud.trendTitle') }}</div>
+            <div ref="trendChartRef" class="chart-box"></div>
+          </Card>
+        </Col>
+        <Col :xs="24" :lg="12">
+          <Card class="section-card">
+            <div class="section-title">{{ t('ocr.fraud.regionTitle') }}</div>
+            <div ref="regionChartRef" class="chart-box"></div>
+          </Card>
+        </Col>
+      </Row>
+
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.fraud.alertsTitle') }}</div>
+        <div class="alert-list">
+          <div v-for="alert in alerts" :key="alert.id" class="alert-item">
+            <div class="alert-left">
+              <div class="alert-icon" :class="alert.tone">
+                <Icon :icon="alert.icon" :size="18" />
+              </div>
+              <div>
+                <div class="alert-title">{{ alert.orderId }}</div>
+                <div class="alert-desc">{{ alert.desc }}</div>
+              </div>
+            </div>
+            <Tag :color="alert.risk >= 80 ? 'red' : 'orange'">{{ alert.risk }}%</Tag>
+          </div>
+        </div>
+      </Card>
     </div>
   </PageWrapper>
 </template>

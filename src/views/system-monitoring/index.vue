@@ -1,72 +1,72 @@
 <template>
   <PageWrapper :contentStyle="{ margin: 0 }">
     <div class="page">
-    <div class="page-header">
-      <div>
-        <div class="page-title">{{ t('ocr.monitoring.title') }}</div>
-        <div class="page-subtitle">{{ t('ocr.monitoring.subtitle') }}</div>
+      <div class="page-header">
+        <div>
+          <div class="page-title">{{ t('ocr.monitoring.title') }}</div>
+          <div class="page-subtitle">{{ t('ocr.monitoring.subtitle') }}</div>
+        </div>
+        <div class="header-meta">
+          <span class="meta-label">{{ t('ocr.common.status') }}:</span>
+          <span class="meta-value tone-success">{{ t('ocr.monitoring.statusOnline') }}</span>
+        </div>
       </div>
-      <div class="header-meta">
-        <span class="meta-label">{{ t('ocr.common.status') }}:</span>
-        <span class="meta-value tone-success">{{ t('ocr.monitoring.statusOnline') }}</span>
-      </div>
-    </div>
 
-    <Row :gutter="[12, 12]" class="section-row">
-      <Col v-for="stat in stats" :key="stat.label" :xs="24" :sm="12" :lg="6">
-        <Card class="section-card">
-          <div class="stat-card" :class="stat.tone">
-            <div>
-              <div class="stat-value">{{ stat.value }}</div>
-              <div class="stat-label">{{ stat.label }}</div>
+      <Row :gutter="[12, 12]" class="section-row">
+        <Col v-for="stat in stats" :key="stat.label" :xs="24" :sm="12" :lg="6">
+          <Card class="section-card">
+            <div class="stat-card" :class="stat.tone">
+              <div>
+                <div class="stat-value">{{ stat.value }}</div>
+                <div class="stat-label">{{ stat.label }}</div>
+              </div>
+              <Icon :icon="stat.icon" :size="20" />
             </div>
-            <Icon :icon="stat.icon" :size="20" />
-          </div>
-        </Card>
-      </Col>
-    </Row>
+          </Card>
+        </Col>
+      </Row>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.monitoring.nodesTitle') }}</div>
-      <div class="node-grid">
-        <div v-for="node in nodes" :key="node.id" class="node-card">
-          <div class="node-header">
-            <span class="node-id">{{ node.id }}</span>
-            <Tag :color="node.cpu > 85 || node.mem > 85 ? 'orange' : 'green'">
-              {{
-                node.cpu > 85 || node.mem > 85
-                  ? t('ocr.monitoring.nodeWarning')
-                  : t('ocr.monitoring.nodeHealthy')
-              }}
-            </Tag>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.monitoring.nodesTitle') }}</div>
+        <div class="node-grid">
+          <div v-for="node in nodes" :key="node.id" class="node-card">
+            <div class="node-header">
+              <span class="node-id">{{ node.id }}</span>
+              <Tag :color="node.cpu > 85 || node.mem > 85 ? 'orange' : 'green'">
+                {{
+                  node.cpu > 85 || node.mem > 85
+                    ? t('ocr.monitoring.nodeWarning')
+                    : t('ocr.monitoring.nodeHealthy')
+                }}
+              </Tag>
+            </div>
+            <div class="node-type">{{ node.type }}</div>
+            <div class="metric">
+              <span>{{ t('ocr.monitoring.metricCpu') }}</span>
+              <div class="bar"><span :style="{ width: node.cpu + '%' }"></span></div>
+              <span>{{ node.cpu }}%</span>
+            </div>
+            <div class="metric">
+              <span>{{ t('ocr.monitoring.metricMem') }}</span>
+              <div class="bar"><span :style="{ width: node.mem + '%' }"></span></div>
+              <span>{{ node.mem }}%</span>
+            </div>
+            <div class="node-meta">{{ t('ocr.monitoring.nodeTasks') }}: {{ node.tasks }}</div>
           </div>
-          <div class="node-type">{{ node.type }}</div>
-          <div class="metric">
-            <span>{{ t('ocr.monitoring.metricCpu') }}</span>
-            <div class="bar"><span :style="{ width: node.cpu + '%' }"></span></div>
-            <span>{{ node.cpu }}%</span>
-          </div>
-          <div class="metric">
-            <span>{{ t('ocr.monitoring.metricMem') }}</span>
-            <div class="bar"><span :style="{ width: node.mem + '%' }"></span></div>
-            <span>{{ node.mem }}%</span>
-          </div>
-          <div class="node-meta">{{ t('ocr.monitoring.nodeTasks') }}: {{ node.tasks }}</div>
         </div>
-      </div>
-    </Card>
+      </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.monitoring.logsTitle') }}</div>
-      <div class="log-list">
-        <div v-for="log in logs" :key="log.id" class="log-item">
-          <span class="log-time">{{ log.time }}</span>
-          <span class="log-level" :class="log.levelClass">{{ log.level }}</span>
-          <span class="log-service">[{{ log.service }}]</span>
-          <span class="log-message">{{ log.message }}</span>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.monitoring.logsTitle') }}</div>
+        <div class="log-list">
+          <div v-for="log in logs" :key="log.id" class="log-item">
+            <span class="log-time">{{ log.time }}</span>
+            <span class="log-level" :class="log.levelClass">{{ log.level }}</span>
+            <span class="log-service">[{{ log.service }}]</span>
+            <span class="log-message">{{ log.message }}</span>
+          </div>
         </div>
-      </div>
-    </Card>
+      </Card>
     </div>
   </PageWrapper>
 </template>

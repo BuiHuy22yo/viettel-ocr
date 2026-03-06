@@ -350,7 +350,7 @@ export function useTableScroll(
   });
 
   const getScrollRef = computed(() => {
-    const tableHeight = unref(tableHeightRef)
+    const tableHeight = unref(tableHeightRef);
     const { canResize, scroll } = unref(propsRef);
     return {
       x: unref(getScrollX),

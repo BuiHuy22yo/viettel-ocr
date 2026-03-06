@@ -309,7 +309,8 @@ export default {
     retrainTrain: 'Model Retraining',
     retrainTest: 'A/B Testing',
     retrainDeploy: 'Model Deploy',
-    retrainNote: 'Chu ky cai tien lien tuc - moi 2 tuan retrain, deploy tu dong khi accuracy tang >= 0.5%',
+    retrainNote:
+      'Chu ky cai tien lien tuc - moi 2 tuan retrain, deploy tu dong khi accuracy tang >= 0.5%',
   },
   apiKeys: {
     title: 'API Keys',
@@ -380,7 +381,8 @@ export default {
     summaryExtract: 'Trich xuat thong tin tu anh van don',
     descExtract: 'Gui anh van don de OCR trich xuat du lieu co cau truc.',
     descImageUrl: 'URL anh van don (HTTPS, max 10MB)',
-    descModel: 'Model OCR: auto, google/gemini-2.5-flash-lite, google/gemini-2.5-flash, google/gemini-3-flash-preview',
+    descModel:
+      'Model OCR: auto, google/gemini-2.5-flash-lite, google/gemini-2.5-flash, google/gemini-3-flash-preview',
     descWebhook: 'Callback URL (async mode)',
     summaryStatus: 'Kiem tra trang thai OCR',
     descStatus: 'Tra cuu trang thai va ket qua cua request OCR.',

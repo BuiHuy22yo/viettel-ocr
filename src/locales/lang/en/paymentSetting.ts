@@ -11,7 +11,7 @@ export default {
     subTitle: 'Setup age of customer debt',
     addButton: 'Add Payment Debt Age',
     tableData: {
-      debtAge: 'Debt Age'
+      debtAge: 'Debt Age',
     },
     createDebtAge: 'Add Payment Debt Age',
     updateDebtAge: 'Update Payment Debt Age',
@@ -21,7 +21,7 @@ export default {
     subTitle: 'Classify type of debt group',
     addButton: 'Add Payment Debt Type',
     tableData: {
-      debtType: 'Debt Type'
+      debtType: 'Debt Type',
     },
     createDebtType: 'Add Payment Debt Type',
     updateDebtType: 'Update Payment Debt Type',
@@ -31,9 +31,9 @@ export default {
     subTitle: 'Setup payment document for your business',
     addButton: 'Add Payment Document',
     tableData: {
-      document: 'Document'
+      document: 'Document',
     },
     createDocument: 'Add Payment Document',
     updateDocument: 'Update Payment Document',
-  }
-}
+  },
+};

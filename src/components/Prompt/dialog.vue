@@ -25,7 +25,7 @@
     onOK?: Fn;
     width?: string;
     labelWidth?: number;
-    layout?:'vertical' | 'horizontal' |  'inline';
+    layout?: 'vertical' | 'horizontal' | 'inline';
   }>();
 
   const open = ref<boolean>(true);

@@ -1,116 +1,116 @@
 <template>
   <PageWrapper :contentStyle="{ margin: 0 }">
     <div class="page">
-    <div class="page-header">
-      <div>
-        <div class="page-title">{{ t('ocr.apiDocs.title') }}</div>
-        <div class="page-subtitle">{{ t('ocr.apiDocs.subtitle') }}</div>
-      </div>
-    </div>
-
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.apiDocs.overview') }}</div>
-      <div class="overview-grid">
+      <div class="page-header">
         <div>
-          <div class="overview-row"
-            ><span>{{ t('ocr.apiDocs.baseUrl') }}:</span>
-            <code>https://api.viettelpost-ocr.vn</code></div
-          >
-          <div class="overview-row"
-            ><span>{{ t('ocr.apiDocs.protocol') }}:</span> HTTPS</div
-          >
-          <div class="overview-row"
-            ><span>{{ t('ocr.apiDocs.format') }}:</span> JSON</div
-          >
-          <div class="overview-row"
-            ><span>{{ t('ocr.apiDocs.encoding') }}:</span> UTF-8</div
-          >
-        </div>
-        <div>
-          <div class="overview-row"
-            ><span>{{ t('ocr.apiDocs.rate') }}:</span> {{ rateLimitText }}</div
-          >
-          <div class="overview-row"
-            ><span>{{ t('ocr.apiDocs.maxImage') }}:</span> 10MB</div
-          >
-          <div class="overview-row"
-            ><span>{{ t('ocr.apiDocs.supported') }}:</span>
-            {{ t('ocr.apiDocs.supportedFormats') }}</div
-          >
-          <div class="overview-row"
-            ><span>{{ t('ocr.apiDocs.version') }}:</span> v1</div
-          >
+          <div class="page-title">{{ t('ocr.apiDocs.title') }}</div>
+          <div class="page-subtitle">{{ t('ocr.apiDocs.subtitle') }}</div>
         </div>
       </div>
-    </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.apiDocs.auth') }}</div>
-      <pre class="code-block">Authorization: Bearer vtp_live_sk_YOUR_API_KEY</pre>
-      <div class="note">{{ t('ocr.apiDocs.authNote') }}</div>
-    </Card>
-
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.apiDocs.endpoints') }}</div>
-      <Tabs v-model:activeKey="activeTab">
-        <Tabs.TabPane
-          v-for="(ep, idx) in endpoints.value"
-          :key="String(idx)"
-          :tab="ep.method + ' ' + ep.path"
-        >
-          <div class="endpoint-title">{{ ep.summary }}</div>
-          <div class="endpoint-desc">{{ ep.description }}</div>
-          <div class="endpoint-meta">
-            <Tag :color="methodColor(ep.method)">{{ ep.method }}</Tag>
-            <code>{{ ep.path }}</code>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.apiDocs.overview') }}</div>
+        <div class="overview-grid">
+          <div>
+            <div class="overview-row"
+              ><span>{{ t('ocr.apiDocs.baseUrl') }}:</span>
+              <code>https://api.viettelpost-ocr.vn</code></div
+            >
+            <div class="overview-row"
+              ><span>{{ t('ocr.apiDocs.protocol') }}:</span> HTTPS</div
+            >
+            <div class="overview-row"
+              ><span>{{ t('ocr.apiDocs.format') }}:</span> JSON</div
+            >
+            <div class="overview-row"
+              ><span>{{ t('ocr.apiDocs.encoding') }}:</span> UTF-8</div
+            >
           </div>
-          <div class="endpoint-section">
-            <div class="section-subtitle">{{ t('ocr.apiDocs.headers') }}</div>
-            <Table
-              :columns="headerColumns.value"
-              :data-source="ep.headers"
-              row-key="name"
-              :pagination="false"
-            />
+          <div>
+            <div class="overview-row"
+              ><span>{{ t('ocr.apiDocs.rate') }}:</span> {{ rateLimitText }}</div
+            >
+            <div class="overview-row"
+              ><span>{{ t('ocr.apiDocs.maxImage') }}:</span> 10MB</div
+            >
+            <div class="overview-row"
+              ><span>{{ t('ocr.apiDocs.supported') }}:</span>
+              {{ t('ocr.apiDocs.supportedFormats') }}</div
+            >
+            <div class="overview-row"
+              ><span>{{ t('ocr.apiDocs.version') }}:</span> v1</div
+            >
           </div>
-          <div class="endpoint-section" v-if="ep.body.length">
-            <div class="section-subtitle">{{ t('ocr.apiDocs.requestBody') }}</div>
-            <Table
-              :columns="bodyColumns.value"
-              :data-source="ep.body"
-              row-key="name"
-              :pagination="false"
-            />
-          </div>
-          <div class="endpoint-section">
-            <div class="section-subtitle">{{ t('ocr.apiDocs.response') }}</div>
-            <pre class="code-block">{{ ep.response }}</pre>
-          </div>
-        </Tabs.TabPane>
-      </Tabs>
-    </Card>
+        </div>
+      </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.apiDocs.routing') }}</div>
-      <Table
-        :columns="routingColumns.value"
-        :data-source="routing.value"
-        row-key="value"
-        :pagination="false"
-      />
-    </Card>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.apiDocs.auth') }}</div>
+        <pre class="code-block">Authorization: Bearer vtp_live_sk_YOUR_API_KEY</pre>
+        <div class="note">{{ t('ocr.apiDocs.authNote') }}</div>
+      </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.apiDocs.errors') }}</div>
-      <Table
-        :columns="errorColumns.value"
-        :data-source="errors.value"
-        row-key="code"
-        :pagination="false"
-      />
-    </Card>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.apiDocs.endpoints') }}</div>
+        <Tabs v-model:activeKey="activeTab">
+          <Tabs.TabPane
+            v-for="(ep, idx) in endpoints.value"
+            :key="String(idx)"
+            :tab="ep.method + ' ' + ep.path"
+          >
+            <div class="endpoint-title">{{ ep.summary }}</div>
+            <div class="endpoint-desc">{{ ep.description }}</div>
+            <div class="endpoint-meta">
+              <Tag :color="methodColor(ep.method)">{{ ep.method }}</Tag>
+              <code>{{ ep.path }}</code>
+            </div>
+            <div class="endpoint-section">
+              <div class="section-subtitle">{{ t('ocr.apiDocs.headers') }}</div>
+              <Table
+                :columns="headerColumns.value"
+                :data-source="ep.headers"
+                row-key="name"
+                :pagination="false"
+              />
+            </div>
+            <div class="endpoint-section" v-if="ep.body.length">
+              <div class="section-subtitle">{{ t('ocr.apiDocs.requestBody') }}</div>
+              <Table
+                :columns="bodyColumns.value"
+                :data-source="ep.body"
+                row-key="name"
+                :pagination="false"
+              />
+            </div>
+            <div class="endpoint-section">
+              <div class="section-subtitle">{{ t('ocr.apiDocs.response') }}</div>
+              <pre class="code-block">{{ ep.response }}</pre>
+            </div>
+          </Tabs.TabPane>
+        </Tabs>
+      </Card>
 
-    <div class="footer-note">{{ t('ocr.common.noteMock') }}</div>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.apiDocs.routing') }}</div>
+        <Table
+          :columns="routingColumns.value"
+          :data-source="routing.value"
+          row-key="value"
+          :pagination="false"
+        />
+      </Card>
+
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.apiDocs.errors') }}</div>
+        <Table
+          :columns="errorColumns.value"
+          :data-source="errors.value"
+          row-key="code"
+          :pagination="false"
+        />
+      </Card>
+
+      <div class="footer-note">{{ t('ocr.common.noteMock') }}</div>
     </div>
   </PageWrapper>
 </template>

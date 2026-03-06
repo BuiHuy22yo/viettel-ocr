@@ -44,7 +44,8 @@ export default {
     fireResourceError: 'Kích hoạt lỗi tài nguyên',
     fireAjaxError: 'Kích hoạt lỗi Ajax',
 
-    enableMessage: 'Chỉ có hiệu lực khi useErrorHandle=true trong `/src/settings/projectSetting.ts`.',
+    enableMessage:
+      'Chỉ có hiệu lực khi useErrorHandle=true trong `/src/settings/projectSetting.ts`.',
   },
   exception: {
     backLogin: 'Quay lại đăng nhập',
@@ -54,7 +55,8 @@ export default {
     subTitle500: 'Xin lỗi, máy chủ gặp lỗi.',
     noDataTitle: 'Không có dữ liệu trên trang hiện tại.',
     networkErrorTitle: 'Lỗi mạng',
-    networkErrorSubTitle: 'Xin lỗi, kết nối mạng của bạn đã bị ngắt, vui lòng kiểm tra mạng của bạn!',
+    networkErrorSubTitle:
+      'Xin lỗi, kết nối mạng của bạn đã bị ngắt, vui lòng kiểm tra mạng của bạn!',
   },
   lock: {
     unlock: 'Nhấp để mở khóa',

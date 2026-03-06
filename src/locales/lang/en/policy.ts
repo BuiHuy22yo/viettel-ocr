@@ -94,5 +94,5 @@ export default {
   validReferenceData: 'Please choose Reference Data',
   validCalculationExpression: 'Please enter Calculation Expression',
   validNumberValue: 'Please enter Number Value',
-  titleFormulaForCalculatingIndicators: 'Formula for calculating indicators'
+  titleFormulaForCalculatingIndicators: 'Formula for calculating indicators',
 };

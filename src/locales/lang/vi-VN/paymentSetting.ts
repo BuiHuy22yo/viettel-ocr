@@ -11,7 +11,7 @@ export default {
     subTitle: 'Định nghĩa các chu kỳ tính tuổi nợ của Mobifone',
     addButton: 'Thêm chu kỳ tuổi nợ',
     tableData: {
-      debtAge: 'Tuổi nợ'
+      debtAge: 'Tuổi nợ',
     },
     createDebtAge: 'Thêm tuổi nợ',
     updateDebtAge: 'Cập nhật tuổi nợ',
@@ -21,19 +21,20 @@ export default {
     subTitle: 'Xác định các nhóm nợ trên hệ thống của Mobifone',
     addButton: 'Thêm nhóm nợ',
     tableData: {
-      debtType: 'Nhóm nợ'
+      debtType: 'Nhóm nợ',
     },
     createDebtType: 'Thêm nhóm nợ',
     updateDebtType: 'Cập nhật nhóm nợ',
   },
   paymentDocument: {
     title: 'Tài liệu đính kèm',
-    subTitle: 'Định nghĩa các loại danh mục tài liệu liên quan đến thanh toán trong quy trình làm thủ tục thanh toán của Mobifone',
+    subTitle:
+      'Định nghĩa các loại danh mục tài liệu liên quan đến thanh toán trong quy trình làm thủ tục thanh toán của Mobifone',
     addButton: 'Thêm tài liệu',
     tableData: {
-      document: 'Tài liệu'
+      document: 'Tài liệu',
     },
     createDocument: 'Thêm tài liệu',
     updateDocument: 'Cập nhật tài liệu',
-  }
-}
+  },
+};

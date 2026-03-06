@@ -1,86 +1,88 @@
 <template>
   <PageWrapper :contentStyle="{ margin: 0 }">
     <div class="page">
-    <div class="page-header">
-      <div>
-        <div class="page-title">{{ t('ocr.analytics.title') }}</div>
-        <div class="page-subtitle">{{ t('ocr.analytics.subtitle') }}</div>
+      <div class="page-header">
+        <div>
+          <div class="page-title">{{ t('ocr.analytics.title') }}</div>
+          <div class="page-subtitle">{{ t('ocr.analytics.subtitle') }}</div>
+        </div>
+        <div class="header-actions">
+          <Button
+            size="small"
+            :type="activeRange === '7d' ? 'primary' : 'default'"
+            @click="setRange('7d')"
+          >
+            {{ t('ocr.analytics.range7d') }}
+          </Button>
+          <Button
+            size="small"
+            :type="activeRange === '30d' ? 'primary' : 'default'"
+            @click="setRange('30d')"
+          >
+            {{ t('ocr.analytics.range30d') }}
+          </Button>
+          <DatePicker.RangePicker
+            v-model:value="customRange"
+            size="small"
+            @change="setRange('custom')"
+          />
+        </div>
       </div>
-      <div class="header-actions">
-        <Button
-          size="small"
-          :type="activeRange === '7d' ? 'primary' : 'default'"
-          @click="setRange('7d')"
-        >
-          {{ t('ocr.analytics.range7d') }}
-        </Button>
-        <Button
-          size="small"
-          :type="activeRange === '30d' ? 'primary' : 'default'"
-          @click="setRange('30d')"
-        >
-          {{ t('ocr.analytics.range30d') }}
-        </Button>
-        <DatePicker.RangePicker
-          v-model:value="customRange"
-          size="small"
-          @change="setRange('custom')"
-        />
-      </div>
-    </div>
 
-    <Row :gutter="[12, 12]" class="section-row">
-      <Col v-for="item in summaryCards" :key="item.label" :xs="24" :sm="12" :lg="6">
-        <Card class="section-card">
-          <div class="summary-card" :class="item.tone">
-            <div>
-              <div class="summary-value">{{ item.value }}</div>
-              <div class="summary-label">{{ item.label }}</div>
+      <Row :gutter="[12, 12]" class="section-row">
+        <Col v-for="item in summaryCards" :key="item.label" :xs="24" :sm="12" :lg="6">
+          <Card class="section-card">
+            <div class="summary-card" :class="item.tone">
+              <div>
+                <div class="summary-value">{{ item.value }}</div>
+                <div class="summary-label">{{ item.label }}</div>
+              </div>
+              <Icon :icon="item.icon" :size="22" />
             </div>
-            <Icon :icon="item.icon" :size="22" />
-          </div>
-        </Card>
-      </Col>
-    </Row>
+          </Card>
+        </Col>
+      </Row>
 
-    <Row :gutter="[12, 12]" class="section-row">
-      <Col :xs="24" :lg="12">
-        <Card class="section-card">
-          <div class="section-title">{{ t('ocr.analytics.chartAccuracy') }} ({{ rangeLabel }})</div>
-          <div ref="accuracyChartRef" class="chart-box"></div>
-        </Card>
-      </Col>
-      <Col :xs="24" :lg="12">
-        <Card class="section-card">
-          <div class="section-title">{{ t('ocr.analytics.chartVolume') }} ({{ rangeLabel }})</div>
-          <div ref="volumeChartRef" class="chart-box"></div>
-        </Card>
-      </Col>
-    </Row>
+      <Row :gutter="[12, 12]" class="section-row">
+        <Col :xs="24" :lg="12">
+          <Card class="section-card">
+            <div class="section-title"
+              >{{ t('ocr.analytics.chartAccuracy') }} ({{ rangeLabel }})</div
+            >
+            <div ref="accuracyChartRef" class="chart-box"></div>
+          </Card>
+        </Col>
+        <Col :xs="24" :lg="12">
+          <Card class="section-card">
+            <div class="section-title">{{ t('ocr.analytics.chartVolume') }} ({{ rangeLabel }})</div>
+            <div ref="volumeChartRef" class="chart-box"></div>
+          </Card>
+        </Col>
+      </Row>
 
-    <Row :gutter="[12, 12]" class="section-row">
-      <Col :xs="24" :lg="12">
-        <Card class="section-card">
-          <div class="section-title">{{ t('ocr.analytics.chartConfidence') }}</div>
-          <div ref="confidenceChartRef" class="chart-box"></div>
-        </Card>
-      </Col>
-      <Col :xs="24" :lg="12">
-        <Card class="section-card">
-          <div class="section-title">{{ t('ocr.analytics.chartProcessing') }}</div>
-          <div ref="processingChartRef" class="chart-box"></div>
-        </Card>
-      </Col>
-    </Row>
+      <Row :gutter="[12, 12]" class="section-row">
+        <Col :xs="24" :lg="12">
+          <Card class="section-card">
+            <div class="section-title">{{ t('ocr.analytics.chartConfidence') }}</div>
+            <div ref="confidenceChartRef" class="chart-box"></div>
+          </Card>
+        </Col>
+        <Col :xs="24" :lg="12">
+          <Card class="section-card">
+            <div class="section-title">{{ t('ocr.analytics.chartProcessing') }}</div>
+            <div ref="processingChartRef" class="chart-box"></div>
+          </Card>
+        </Col>
+      </Row>
 
-    <Row :gutter="[12, 12]" class="section-row">
-      <Col :xs="24" :lg="12">
-        <Card class="section-card">
-          <div class="section-title">{{ t('ocr.analytics.chartHourly') }}</div>
-          <div ref="hourlyChartRef" class="chart-box"></div>
-        </Card>
-      </Col>
-    </Row>
+      <Row :gutter="[12, 12]" class="section-row">
+        <Col :xs="24" :lg="12">
+          <Card class="section-card">
+            <div class="section-title">{{ t('ocr.analytics.chartHourly') }}</div>
+            <div ref="hourlyChartRef" class="chart-box"></div>
+          </Card>
+        </Col>
+      </Row>
     </div>
   </PageWrapper>
 </template>

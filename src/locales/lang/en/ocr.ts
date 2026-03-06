@@ -309,7 +309,8 @@ export default {
     retrainTrain: 'Model Retraining',
     retrainTest: 'A/B Testing',
     retrainDeploy: 'Model Deploy',
-    retrainNote: 'Continuous improvement cycle - retrain every 2 weeks, auto deploy when accuracy improves >= 0.5%',
+    retrainNote:
+      'Continuous improvement cycle - retrain every 2 weeks, auto deploy when accuracy improves >= 0.5%',
   },
   apiKeys: {
     title: 'API Keys',
@@ -380,7 +381,8 @@ export default {
     summaryExtract: 'Extract fields from waybill image',
     descExtract: 'Send a waybill image to OCR for structured extraction.',
     descImageUrl: 'Waybill image URL (HTTPS, max 10MB)',
-    descModel: 'OCR model: auto, google/gemini-2.5-flash-lite, google/gemini-2.5-flash, google/gemini-3-flash-preview',
+    descModel:
+      'OCR model: auto, google/gemini-2.5-flash-lite, google/gemini-2.5-flash, google/gemini-3-flash-preview',
     descWebhook: 'Callback URL (async mode)',
     summaryStatus: 'Check OCR status',
     descStatus: 'Query status and results for a submitted OCR request.',

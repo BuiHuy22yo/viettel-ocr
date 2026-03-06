@@ -1,32 +1,32 @@
 <template>
   <PageWrapper :contentStyle="{ margin: 0 }">
     <div class="page">
-    <div class="page-header">
-      <div>
-        <div class="page-title">{{ t('ocr.humanReview.title') }}</div>
-        <div class="page-subtitle">{{ t('ocr.humanReview.subtitle') }}</div>
-      </div>
-      <div class="queue-meta">
-        <span class="meta-label">{{ t('ocr.humanReview.queue') }}:</span>
-        <span class="meta-value">{{ reviewItems.length }}</span>
-        <span class="meta-label">{{ t('ocr.humanReview.queueSuffix') }}</span>
-      </div>
-    </div>
-
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.humanReview.legendTitle') }}</div>
-      <div class="legend">
-        <div v-for="item in confidenceLegend" :key="item.key" class="legend-item">
-          <span class="legend-dot" :class="item.dotClass"></span>
-          <span>{{ item.label }}</span>
+      <div class="page-header">
+        <div>
+          <div class="page-title">{{ t('ocr.humanReview.title') }}</div>
+          <div class="page-subtitle">{{ t('ocr.humanReview.subtitle') }}</div>
+        </div>
+        <div class="queue-meta">
+          <span class="meta-label">{{ t('ocr.humanReview.queue') }}:</span>
+          <span class="meta-value">{{ reviewItems.length }}</span>
+          <span class="meta-label">{{ t('ocr.humanReview.queueSuffix') }}</span>
         </div>
       </div>
-    </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.humanReview.queueTitle') }}</div>
-      <BasicTable @register="registerTable" />
-    </Card>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.humanReview.legendTitle') }}</div>
+        <div class="legend">
+          <div v-for="item in confidenceLegend" :key="item.key" class="legend-item">
+            <span class="legend-dot" :class="item.dotClass"></span>
+            <span>{{ item.label }}</span>
+          </div>
+        </div>
+      </Card>
+
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.humanReview.queueTitle') }}</div>
+        <BasicTable @register="registerTable" />
+      </Card>
     </div>
   </PageWrapper>
 </template>

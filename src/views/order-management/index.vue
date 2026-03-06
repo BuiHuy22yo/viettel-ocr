@@ -1,46 +1,46 @@
 <template>
   <PageWrapper :contentStyle="{ margin: 0 }">
     <div class="page">
-    <div class="page-header">
-      <div>
-        <div class="page-title">{{ t('ocr.orderManagement.title') }}</div>
-        <div class="page-subtitle">{{ t('ocr.orderManagement.subtitle') }}</div>
-      </div>
-      <Tooltip :title="t('ocr.orderManagement.export')">
-        <Button type="default" size="small">
-          <Icon icon="ion:download-outline" :size="16" class="btn-icon" />
-          {{ t('ocr.orderManagement.export') }}
-        </Button>
-      </Tooltip>
-    </div>
-
-    <Card class="section-card">
-      <div class="filter-row">
-        <Input
-          v-model:value="search"
-          :placeholder="t('ocr.orderManagement.searchPlaceholder')"
-          class="filter-input"
-        />
-        <div class="filter-actions">
-          <Button
-            v-for="item in statusOptions"
-            :key="item.value"
-            size="small"
-            :type="statusFilter === item.value ? 'primary' : 'default'"
-            @click="statusFilter = item.value"
-          >
-            {{ item.label }}
-          </Button>
+      <div class="page-header">
+        <div>
+          <div class="page-title">{{ t('ocr.orderManagement.title') }}</div>
+          <div class="page-subtitle">{{ t('ocr.orderManagement.subtitle') }}</div>
         </div>
+        <Tooltip :title="t('ocr.orderManagement.export')">
+          <Button type="default" size="small">
+            <Icon icon="ion:download-outline" :size="16" class="btn-icon" />
+            {{ t('ocr.orderManagement.export') }}
+          </Button>
+        </Tooltip>
       </div>
-    </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{
-        t('ocr.orderManagement.resultCount', { count: filteredOrders.length })
-      }}</div>
-      <BasicTable @register="registerTable" />
-    </Card>
+      <Card class="section-card">
+        <div class="filter-row">
+          <Input
+            v-model:value="search"
+            :placeholder="t('ocr.orderManagement.searchPlaceholder')"
+            class="filter-input"
+          />
+          <div class="filter-actions">
+            <Button
+              v-for="item in statusOptions"
+              :key="item.value"
+              size="small"
+              :type="statusFilter === item.value ? 'primary' : 'default'"
+              @click="statusFilter = item.value"
+            >
+              {{ item.label }}
+            </Button>
+          </div>
+        </div>
+      </Card>
+
+      <Card class="section-card">
+        <div class="section-title">{{
+          t('ocr.orderManagement.resultCount', { count: filteredOrders.length })
+        }}</div>
+        <BasicTable @register="registerTable" />
+      </Card>
     </div>
   </PageWrapper>
 </template>

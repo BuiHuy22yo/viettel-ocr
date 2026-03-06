@@ -1,67 +1,67 @@
 <template>
   <PageWrapper :contentStyle="{ margin: 0 }">
     <div class="page">
-    <div class="page-header">
-      <div>
-        <div class="page-title">{{ t('ocr.ocrProcessing.title') }}</div>
-        <div class="page-subtitle">{{ t('ocr.ocrProcessing.subtitle') }}</div>
-      </div>
-      <div class="header-meta">
-        <span class="meta-label">{{ t('ocr.ocrProcessing.model') }}:</span>
-        <span class="meta-value">{{ selectedModelLabel }}</span>
-      </div>
-    </div>
-
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.ocrProcessing.legendTitle') }}</div>
-      <div class="legend">
-        <div v-for="item in routingLegend" :key="item.key" class="legend-item">
-          <span class="legend-dot" :class="item.dotClass"></span>
-          <span class="legend-label">{{ item.label }}</span>
-          <span class="legend-desc">{{ item.desc }}</span>
+      <div class="page-header">
+        <div>
+          <div class="page-title">{{ t('ocr.ocrProcessing.title') }}</div>
+          <div class="page-subtitle">{{ t('ocr.ocrProcessing.subtitle') }}</div>
+        </div>
+        <div class="header-meta">
+          <span class="meta-label">{{ t('ocr.ocrProcessing.model') }}:</span>
+          <span class="meta-value">{{ selectedModelLabel }}</span>
         </div>
       </div>
-    </Card>
 
-    <Card class="section-card">
-      <div class="model-row">
-        <div class="model-label">
-          <Tooltip :title="t('ocr.ocrProcessing.model')">
-            <Icon icon="ion:scan-outline" :size="18" class="model-icon" />
-          </Tooltip>
-          {{ t('ocr.ocrProcessing.model') }}
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.ocrProcessing.legendTitle') }}</div>
+        <div class="legend">
+          <div v-for="item in routingLegend" :key="item.key" class="legend-item">
+            <span class="legend-dot" :class="item.dotClass"></span>
+            <span class="legend-label">{{ item.label }}</span>
+            <span class="legend-desc">{{ item.desc }}</span>
+          </div>
         </div>
-        <Select v-model:value="selectedModel" class="model-select" :options="modelOptions" />
-      </div>
-    </Card>
-
-    <Card class="section-card upload-card">
-      <Upload.Dragger :before-upload="() => false" :multiple="true" :show-upload-list="false">
-        <div class="upload-inner">
-          <Tooltip :title="t('ocr.ocrProcessing.uploadTitle')">
-            <div class="upload-icon">
-              <Icon icon="ion:cloud-upload-outline" :size="32" />
-            </div>
-          </Tooltip>
-          <div class="upload-title">{{ t('ocr.ocrProcessing.uploadTitle') }}</div>
-          <div class="upload-subtitle">{{ t('ocr.ocrProcessing.uploadSubtitle') }}</div>
-          <Button type="default" size="small">{{ t('ocr.ocrProcessing.selectFile') }}</Button>
-        </div>
-      </Upload.Dragger>
-    </Card>
-
-    <div class="stat-grid">
-      <Card v-for="item in statCards" :key="item.title" class="stat-card">
-        <div class="stat-title">{{ item.title }}</div>
-        <div class="stat-value" :class="item.tone">{{ item.value }}</div>
-        <div class="stat-subtitle">{{ item.subtitle }}</div>
       </Card>
-    </div>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.ocrProcessing.recentResults') }}</div>
-      <BasicTable @register="registerTable" />
-    </Card>
+      <Card class="section-card">
+        <div class="model-row">
+          <div class="model-label">
+            <Tooltip :title="t('ocr.ocrProcessing.model')">
+              <Icon icon="ion:scan-outline" :size="18" class="model-icon" />
+            </Tooltip>
+            {{ t('ocr.ocrProcessing.model') }}
+          </div>
+          <Select v-model:value="selectedModel" class="model-select" :options="modelOptions" />
+        </div>
+      </Card>
+
+      <Card class="section-card upload-card">
+        <Upload.Dragger :before-upload="() => false" :multiple="true" :show-upload-list="false">
+          <div class="upload-inner">
+            <Tooltip :title="t('ocr.ocrProcessing.uploadTitle')">
+              <div class="upload-icon">
+                <Icon icon="ion:cloud-upload-outline" :size="32" />
+              </div>
+            </Tooltip>
+            <div class="upload-title">{{ t('ocr.ocrProcessing.uploadTitle') }}</div>
+            <div class="upload-subtitle">{{ t('ocr.ocrProcessing.uploadSubtitle') }}</div>
+            <Button type="default" size="small">{{ t('ocr.ocrProcessing.selectFile') }}</Button>
+          </div>
+        </Upload.Dragger>
+      </Card>
+
+      <div class="stat-grid">
+        <Card v-for="item in statCards" :key="item.title" class="stat-card">
+          <div class="stat-title">{{ item.title }}</div>
+          <div class="stat-value" :class="item.tone">{{ item.value }}</div>
+          <div class="stat-subtitle">{{ item.subtitle }}</div>
+        </Card>
+      </div>
+
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.ocrProcessing.recentResults') }}</div>
+        <BasicTable @register="registerTable" />
+      </Card>
     </div>
   </PageWrapper>
 </template>

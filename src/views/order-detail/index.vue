@@ -1,97 +1,99 @@
 <template>
   <PageWrapper :contentStyle="{ margin: 0 }">
     <div class="page">
-    <div class="page-header">
-      <Tooltip :title="t('ocr.orderDetail.back')">
-        <Button type="text" class="back-btn" @click="goBack">
-          <Icon icon="ion:arrow-back-outline" :size="18" />
-        </Button>
-      </Tooltip>
-      <div class="header-info">
-        <div class="page-title">{{ order.tracking }}</div>
-        <div class="page-subtitle">{{
-          t('ocr.orderDetail.subtitle', { time: order.processingTime })
-        }}</div>
-      </div>
-      <Tag :color="statusMap[order.status].color">{{ statusMap[order.status].label }}</Tag>
-    </div>
-
-    <div class="content-grid">
-      <Card class="section-card">
-        <div class="card-header">
-          <div class="section-title">{{ t('ocr.orderDetail.originalImage') }}</div>
-          <div class="zoom-controls">
-            <Button size="small" @click="zoomOut">-</Button>
-            <span class="zoom-value">{{ Math.round(zoom * 100) }}%</span>
-            <Button size="small" @click="zoomIn">+</Button>
-          </div>
-        </div>
-        <div class="image-wrapper">
-          <div class="image-inner" :style="{ transform: `scale(${zoom})` }">
-            <div class="image-placeholder">
-              <Icon icon="ion:image-outline" :size="28" />
-              <div>{{ t('ocr.orderDetail.preview') }}</div>
-            </div>
-          </div>
-        </div>
-      </Card>
-
-      <div class="side-panel">
-        <Card class="section-card">
-          <div class="section-title">{{ t('ocr.orderDetail.ocrResult') }}</div>
-          <div class="field-list">
-            <div v-for="field in fields" :key="field.key" class="field-item">
-              <div class="field-meta">
-                <span class="field-label">{{ field.label }}</span>
-                <span class="field-confidence" :class="field.confidenceTone"
-                  >{{ field.confidence }}%</span
-                >
-              </div>
-              <div class="field-value">
-                <Input v-if="field.editing" v-model:value="field.corrected" size="small" />
-                <span v-else>{{ field.corrected || field.value }}</span>
-              </div>
-              <div class="field-actions">
-                <Tooltip
-                  :title="field.editing ? $t('ocr.reviewDetail.save') : $t('ocr.reviewDetail.edit')"
-                >
-                  <Button size="small" type="text" @click="toggleEdit(field)">
-                    <Icon
-                      :icon="field.editing ? 'ion:checkmark-outline' : 'ion:pencil-outline'"
-                      :size="16"
-                    />
-                  </Button>
-                </Tooltip>
-                <Tooltip v-if="field.corrected" :title="t('ocr.reviewDetail.revert')">
-                  <Button size="small" type="text" @click="revertField(field)">
-                    <Icon icon="ion:refresh-outline" :size="16" />
-                  </Button>
-                </Tooltip>
-              </div>
-            </div>
-          </div>
-        </Card>
-
-        <Card class="section-card">
-          <div class="section-title">{{ t('ocr.orderDetail.comparison') }}</div>
-          <div v-if="diffFields.length === 0" class="empty-state">{{
-            t('ocr.reviewDetail.noChanges')
+      <div class="page-header">
+        <Tooltip :title="t('ocr.orderDetail.back')">
+          <Button type="text" class="back-btn" @click="goBack">
+            <Icon icon="ion:arrow-back-outline" :size="18" />
+          </Button>
+        </Tooltip>
+        <div class="header-info">
+          <div class="page-title">{{ order.tracking }}</div>
+          <div class="page-subtitle">{{
+            t('ocr.orderDetail.subtitle', { time: order.processingTime })
           }}</div>
-          <div v-else class="diff-list">
-            <div v-for="item in diffFields" :key="item.key" class="diff-item">
-              <div class="diff-label">{{ item.label }}</div>
-              <div class="diff-old">{{ item.value }}</div>
-              <div class="diff-new">{{ item.corrected }}</div>
+        </div>
+        <Tag :color="statusMap[order.status].color">{{ statusMap[order.status].label }}</Tag>
+      </div>
+
+      <div class="content-grid">
+        <Card class="section-card">
+          <div class="card-header">
+            <div class="section-title">{{ t('ocr.orderDetail.originalImage') }}</div>
+            <div class="zoom-controls">
+              <Button size="small" @click="zoomOut">-</Button>
+              <span class="zoom-value">{{ Math.round(zoom * 100) }}%</span>
+              <Button size="small" @click="zoomIn">+</Button>
+            </div>
+          </div>
+          <div class="image-wrapper">
+            <div class="image-inner" :style="{ transform: `scale(${zoom})` }">
+              <div class="image-placeholder">
+                <Icon icon="ion:image-outline" :size="28" />
+                <div>{{ t('ocr.orderDetail.preview') }}</div>
+              </div>
             </div>
           </div>
         </Card>
 
-        <div class="action-row">
-          <Button type="primary" block>{{ t('ocr.orderDetail.actionSave') }}</Button>
-          <Button block @click="goBack">{{ t('ocr.orderDetail.back') }}</Button>
+        <div class="side-panel">
+          <Card class="section-card">
+            <div class="section-title">{{ t('ocr.orderDetail.ocrResult') }}</div>
+            <div class="field-list">
+              <div v-for="field in fields" :key="field.key" class="field-item">
+                <div class="field-meta">
+                  <span class="field-label">{{ field.label }}</span>
+                  <span class="field-confidence" :class="field.confidenceTone"
+                    >{{ field.confidence }}%</span
+                  >
+                </div>
+                <div class="field-value">
+                  <Input v-if="field.editing" v-model:value="field.corrected" size="small" />
+                  <span v-else>{{ field.corrected || field.value }}</span>
+                </div>
+                <div class="field-actions">
+                  <Tooltip
+                    :title="
+                      field.editing ? $t('ocr.reviewDetail.save') : $t('ocr.reviewDetail.edit')
+                    "
+                  >
+                    <Button size="small" type="text" @click="toggleEdit(field)">
+                      <Icon
+                        :icon="field.editing ? 'ion:checkmark-outline' : 'ion:pencil-outline'"
+                        :size="16"
+                      />
+                    </Button>
+                  </Tooltip>
+                  <Tooltip v-if="field.corrected" :title="t('ocr.reviewDetail.revert')">
+                    <Button size="small" type="text" @click="revertField(field)">
+                      <Icon icon="ion:refresh-outline" :size="16" />
+                    </Button>
+                  </Tooltip>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <Card class="section-card">
+            <div class="section-title">{{ t('ocr.orderDetail.comparison') }}</div>
+            <div v-if="diffFields.length === 0" class="empty-state">{{
+              t('ocr.reviewDetail.noChanges')
+            }}</div>
+            <div v-else class="diff-list">
+              <div v-for="item in diffFields" :key="item.key" class="diff-item">
+                <div class="diff-label">{{ item.label }}</div>
+                <div class="diff-old">{{ item.value }}</div>
+                <div class="diff-new">{{ item.corrected }}</div>
+              </div>
+            </div>
+          </Card>
+
+          <div class="action-row">
+            <Button type="primary" block>{{ t('ocr.orderDetail.actionSave') }}</Button>
+            <Button block @click="goBack">{{ t('ocr.orderDetail.back') }}</Button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </PageWrapper>
 </template>

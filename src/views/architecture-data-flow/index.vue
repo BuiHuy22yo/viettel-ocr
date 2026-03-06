@@ -1,130 +1,130 @@
 <template>
   <PageWrapper :contentStyle="{ margin: 0 }">
     <div class="page">
-    <div class="page-header">
-      <div>
-        <div class="page-title">{{ t('ocr.architecture.title') }}</div>
-        <div class="page-subtitle">{{ t('ocr.architecture.subtitle') }}</div>
-      </div>
-    </div>
-
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.architecture.dfLevel0') }}</div>
-      <div class="flow-row">
-        <div class="flow-box primary">{{ t('ocr.architecture.flowMobile') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box">{{ t('ocr.architecture.flowGateway') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box warning">{{ t('ocr.architecture.flowKafka') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box danger">{{ t('ocr.architecture.flowOcr') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box">{{ t('ocr.architecture.flowLlm') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box">{{ t('ocr.architecture.flowValidation') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box">{{ t('ocr.architecture.flowOrder') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box">{{ t('ocr.architecture.flowDb') }}</div>
-      </div>
-    </Card>
-
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.architecture.dfLevel1') }}</div>
-      <div class="flow-grid">
-        <div v-for="step in flowSteps" :key="step.id" class="flow-step">
-          <div class="step-index">{{ step.id }}</div>
-          <div>
-            <div class="step-title">{{ step.title }}</div>
-            <div class="step-desc">{{ step.desc }}</div>
-          </div>
-          <Tag :color="step.type === 'async' ? 'orange' : 'blue'">{{ step.typeLabel }}</Tag>
+      <div class="page-header">
+        <div>
+          <div class="page-title">{{ t('ocr.architecture.title') }}</div>
+          <div class="page-subtitle">{{ t('ocr.architecture.subtitle') }}</div>
         </div>
       </div>
-    </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.architecture.systemArchitecture') }}</div>
-      <div class="layer-list">
-        <div v-for="layer in layers" :key="layer.title" class="layer-item">
-          <div class="layer-title">{{ layer.title }}</div>
-          <div class="layer-grid">
-            <div v-for="item in layer.items" :key="item.name" class="layer-card">
-              <div class="layer-name">{{ item.name }}</div>
-              <div class="layer-desc">{{ item.desc }}</div>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.architecture.dfLevel0') }}</div>
+        <div class="flow-row">
+          <div class="flow-box primary">{{ t('ocr.architecture.flowMobile') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">{{ t('ocr.architecture.flowGateway') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box warning">{{ t('ocr.architecture.flowKafka') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box danger">{{ t('ocr.architecture.flowOcr') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">{{ t('ocr.architecture.flowLlm') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">{{ t('ocr.architecture.flowValidation') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">{{ t('ocr.architecture.flowOrder') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">{{ t('ocr.architecture.flowDb') }}</div>
+        </div>
+      </Card>
+
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.architecture.dfLevel1') }}</div>
+        <div class="flow-grid">
+          <div v-for="step in flowSteps" :key="step.id" class="flow-step">
+            <div class="step-index">{{ step.id }}</div>
+            <div>
+              <div class="step-title">{{ step.title }}</div>
+              <div class="step-desc">{{ step.desc }}</div>
+            </div>
+            <Tag :color="step.type === 'async' ? 'orange' : 'blue'">{{ step.typeLabel }}</Tag>
+          </div>
+        </div>
+      </Card>
+
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.architecture.systemArchitecture') }}</div>
+        <div class="layer-list">
+          <div v-for="layer in layers" :key="layer.title" class="layer-item">
+            <div class="layer-title">{{ layer.title }}</div>
+            <div class="layer-grid">
+              <div v-for="item in layer.items" :key="item.name" class="layer-card">
+                <div class="layer-name">{{ item.name }}</div>
+                <div class="layer-desc">{{ item.desc }}</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </Card>
+      </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.architecture.throughput') }}</div>
-      <div class="scale-grid">
-        <div v-for="metric in throughput" :key="metric.title" class="scale-card">
-          <div class="scale-title">{{ metric.title }}</div>
-          <div class="scale-value">{{ metric.value }}</div>
-          <div class="scale-unit">{{ metric.unit }}</div>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.architecture.throughput') }}</div>
+        <div class="scale-grid">
+          <div v-for="metric in throughput" :key="metric.title" class="scale-card">
+            <div class="scale-title">{{ metric.title }}</div>
+            <div class="scale-value">{{ metric.value }}</div>
+            <div class="scale-unit">{{ metric.unit }}</div>
+          </div>
         </div>
-      </div>
-      <div class="capacity-grid">
-        <div v-for="cap in capacity" :key="cap.title" class="capacity-card">
-          <div class="capacity-title">{{ cap.title }}</div>
-          <div class="capacity-desc">{{ cap.desc }}</div>
-          <div class="capacity-meta">{{ cap.meta }}</div>
+        <div class="capacity-grid">
+          <div v-for="cap in capacity" :key="cap.title" class="capacity-card">
+            <div class="capacity-title">{{ cap.title }}</div>
+            <div class="capacity-desc">{{ cap.desc }}</div>
+            <div class="capacity-meta">{{ cap.meta }}</div>
+          </div>
         </div>
-      </div>
-    </Card>
+      </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.architecture.confidenceModel') }}</div>
-      <div class="confidence-flow">
-        <div class="flow-box danger">{{ t('ocr.architecture.flowOcr') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box warning">{{ t('ocr.architecture.flowLlm') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box">{{ t('ocr.architecture.flowValidation') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box">{{ t('ocr.architecture.confidenceScore') }}</div>
-      </div>
-      <div class="confidence-grid">
-        <div class="confidence-card tone-success">
-          <div class="confidence-value">>= 90%</div>
-          <div class="confidence-label">{{ t('ocr.architecture.confidenceAuto') }}</div>
-          <div class="confidence-meta">{{ t('ocr.architecture.confidenceAutoMeta') }}</div>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.architecture.confidenceModel') }}</div>
+        <div class="confidence-flow">
+          <div class="flow-box danger">{{ t('ocr.architecture.flowOcr') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box warning">{{ t('ocr.architecture.flowLlm') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">{{ t('ocr.architecture.flowValidation') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">{{ t('ocr.architecture.confidenceScore') }}</div>
         </div>
-        <div class="confidence-card tone-warning">
-          <div class="confidence-value">75 - 90%</div>
-          <div class="confidence-label">{{ t('ocr.architecture.confidenceSoft') }}</div>
-          <div class="confidence-meta">{{ t('ocr.architecture.confidenceSoftMeta') }}</div>
+        <div class="confidence-grid">
+          <div class="confidence-card tone-success">
+            <div class="confidence-value">>= 90%</div>
+            <div class="confidence-label">{{ t('ocr.architecture.confidenceAuto') }}</div>
+            <div class="confidence-meta">{{ t('ocr.architecture.confidenceAutoMeta') }}</div>
+          </div>
+          <div class="confidence-card tone-warning">
+            <div class="confidence-value">75 - 90%</div>
+            <div class="confidence-label">{{ t('ocr.architecture.confidenceSoft') }}</div>
+            <div class="confidence-meta">{{ t('ocr.architecture.confidenceSoftMeta') }}</div>
+          </div>
+          <div class="confidence-card tone-error">
+            <div class="confidence-value">&lt; 75%</div>
+            <div class="confidence-label">{{ t('ocr.architecture.confidenceMandatory') }}</div>
+            <div class="confidence-meta">{{ t('ocr.architecture.confidenceMandatoryMeta') }}</div>
+          </div>
         </div>
-        <div class="confidence-card tone-error">
-          <div class="confidence-value">&lt; 75%</div>
-          <div class="confidence-label">{{ t('ocr.architecture.confidenceMandatory') }}</div>
-          <div class="confidence-meta">{{ t('ocr.architecture.confidenceMandatoryMeta') }}</div>
-        </div>
-      </div>
-    </Card>
+      </Card>
 
-    <Card class="section-card">
-      <div class="section-title">{{ t('ocr.architecture.retraining') }}</div>
-      <div class="retrain-flow">
-        <div class="flow-box primary">{{ t('ocr.architecture.retrainHuman') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box">{{ t('ocr.architecture.retrainData') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box warning">{{ t('ocr.architecture.retrainDataset') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box">{{ t('ocr.architecture.retrainTrain') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box">{{ t('ocr.architecture.retrainTest') }}</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-box danger">{{ t('ocr.architecture.retrainDeploy') }}</div>
-      </div>
-      <div class="retrain-note">
-        {{ t('ocr.architecture.retrainNote') }}
-      </div>
-    </Card>
+      <Card class="section-card">
+        <div class="section-title">{{ t('ocr.architecture.retraining') }}</div>
+        <div class="retrain-flow">
+          <div class="flow-box primary">{{ t('ocr.architecture.retrainHuman') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">{{ t('ocr.architecture.retrainData') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box warning">{{ t('ocr.architecture.retrainDataset') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">{{ t('ocr.architecture.retrainTrain') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">{{ t('ocr.architecture.retrainTest') }}</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box danger">{{ t('ocr.architecture.retrainDeploy') }}</div>
+        </div>
+        <div class="retrain-note">
+          {{ t('ocr.architecture.retrainNote') }}
+        </div>
+      </Card>
     </div>
   </PageWrapper>
 </template>
