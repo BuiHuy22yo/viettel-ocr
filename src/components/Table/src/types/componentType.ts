@@ -1,0 +1,17 @@
+export type ComponentType =
+  | 'Input'
+  | 'InputNumber'
+  | 'Select'
+  | 'ApiSelect'
+  | 'AutoComplete'
+  | 'ApiTreeSelect'
+  | 'Checkbox'
+  | 'Switch'
+  | 'DatePicker'
+  | 'MonthPicker'
+  | 'TimePicker'
+  | 'RadioGroup'
+  | 'RadioButtonGroup'
+  | 'ApiRadioGroup'
+  | 'InputNumberCustom'
+  | 'InputTextArea';

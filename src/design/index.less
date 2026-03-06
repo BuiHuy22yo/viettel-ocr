@@ -1,0 +1,141 @@
+@import 'color.less';
+@import 'transition/index.less';
+@import 'var/index.less';
+@import 'public.less';
+@import 'ant/index.less';
+@import 'theme.less';
+@import 'entry.css';
+@import 'https://cdn.jsdelivr.net/npm/@vue-flow/core@1.33.6/dist/style.css';
+@import 'https://cdn.jsdelivr.net/npm/@vue-flow/core@1.33.6/dist/theme-default.css';
+@import 'https://cdn.jsdelivr.net/npm/@vue-flow/controls@latest/dist/style.css';
+@import 'https://cdn.jsdelivr.net/npm/@vue-flow/minimap@latest/dist/style.css';
+@import 'https://cdn.jsdelivr.net/npm/@vue-flow/node-resizer@latest/dist/style.css';
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+.vue-flow__minimap {
+  transform: scale(75%);
+  transform-origin: bottom right;
+}
+
+.vue-flow__handle {
+  width: 6px;
+  height: 6px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  background: var(--vf-handle);
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px transparent inset;
+  -webkit-text-fill-color: @text-color-base;
+}
+
+:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+html {
+  overflow: hidden;
+  text-size-adjust: 100%;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &.color-weak {
+    filter: invert(80%);
+  }
+
+  &.gray-mode {
+    filter: grayscale(100%);
+    filter: progid:dximagetransform.microsoft.basicimage(grayscale=1);
+  }
+}
+
+span.ant-divider-inner-text {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.ant-picker.ant-picker-default {
+  width: 100%;
+}
+
+
+.ant-input[disabled],
+.ant-select-disabled .ant-select-selection-item,
+.ant-textarea[disabled],
+.ant-picker-input > input[disabled],
+.ant-input-affix-wrapper[disabled] .ant-input {
+  color: rgb(0 0 0 / 70%) !important;
+}
+
+.ant-select-disabled:where(.css-dev-only-do-not-override-1yheyoc).ant-select:not(
+    .ant-select-customize-input
+  )
+  .ant-select-selector {
+  color: rgb(0 0 0 / 70%) !important;
+}
+
+.ant-space-compact {
+  width: 100%;
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.vben-menu-submenu-title {
+  text-align: justify;
+}
+
+.slide-out-right {
+  animation: slide-out-right 0.5s forwards;
+}
+//.ant-radio-button-wrapper {
+//  width: 50% !important;
+//}
+//
+//.ant-radio-group.ant-radio-group-solid {
+//  width: 100% !important;
+//}
+
+a:focus,
+a:active,
+button,
+div,
+svg,
+span {
+  outline: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

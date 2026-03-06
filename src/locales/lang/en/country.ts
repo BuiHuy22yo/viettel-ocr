@@ -1,0 +1,18 @@
+export default {
+  code: 'Code',
+  name: 'Name',
+  createdDate: 'Created At',
+  createdBy: 'Created By',
+  modifiedDate: 'Modified At',
+  modifiedBy: 'Modified By',
+  status: 'Status',
+  search: 'Search',
+  add: 'Create',
+  edit: 'Update',
+  delete: 'Delete',
+  view: 'View',
+  cancel: 'Cancel',
+  update: 'Update',
+  create: 'Create',
+  action: 'Action',
+};

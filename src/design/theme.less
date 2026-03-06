@@ -1,0 +1,264 @@
+
+.bg-white {
+  background-color: var(--component-background-color) !important;
+}
+
+html[data-theme='light'] {
+  .text-secondary {
+    color: rgb(0 0 0 / 45%);
+  }
+
+  .ant-card-head-title {
+    display: flex;
+  }
+
+  .ant-alert-success {
+    border: 1px solid #b7eb8f;
+    background-color: #f6ffed;
+  }
+
+  .ant-alert-error {
+    border: 1px solid #ffccc7;
+    background-color: #fff2f0;
+  }
+
+  .ant-alert-warning {
+    border: 1px solid #ffe58f;
+    background-color: #fffbe6;
+  }
+
+  :not(:root):fullscreen::backdrop {
+    background-color: @layout-body-background !important;
+  }
+}
+
+[data-theme='dark'] {
+  body {
+    background-color: #000;
+    color: @text-color-base;
+  }
+
+  .ant-btn {
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &[disabled]:active {
+      border-color: #303030;
+      background: rgb(255 255 255 / 8%);
+      color: rgb(255 255 255 / 30%);
+    }
+
+    &-success.ant-btn-link.ant-btn-loading,
+    &-warning.ant-btn-link.ant-btn-loading,
+    &-error.ant-btn-link.ant-btn-loading,
+    &-background-ghost.ant-btn-link.ant-btn-loading,
+    &.ant-btn-link.ant-btn-loading {
+      &::before {
+        background: transparent;
+      }
+    }
+
+    &:not(
+        .ant-btn-link,
+        .is-disabled,
+        .ant-btn-primary,
+        .ant-btn-success,
+        .ant-btn-warning,
+        .ant-btn-error,
+        .ant-btn-dangerous
+      ) {
+      background: transparent;
+      color: @text-color-base;
+
+      &:hover {
+        color: @button-primary-hover-color;
+      }
+    }
+
+    &-dangerous.ant-btn-primary {
+      &:focus {
+        background: @error-color !important;
+      }
+    }
+
+    &-default.ant-btn-dangerous {
+      border-color: @error-color;
+      background: transparent !important;
+      color: @error-color;
+
+      &:hover,
+      &:focus {
+        border-color: @button-error-hover-color !important;
+        color: @button-error-hover-color !important;
+      }
+    }
+
+    &-default:not(.ant-btn-background-ghost) {
+      border-color: #303030;
+
+      &:hover,
+      &:focus {
+        border-color: @button-cancel-hover-color;
+        color: @button-cancel-hover-color;
+      }
+    }
+
+    &-default.is-disabled {
+      &:hover,
+      &:focus {
+        border-color: #303030;
+        color: rgb(255 255 255 / 30%);
+      }
+    }
+
+    &-success:not(.is-disabled, .ant-btn-link, .ant-btn-background-ghost) {
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: @button-success-active-color !important;
+        background-color: @button-success-active-color !important;
+        color: @white !important;
+      }
+    }
+
+    &-warning:not(.is-disabled, .ant-btn-link, .ant-btn-background-ghost) {
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: @button-warn-active-color !important;
+        background-color: @button-warn-active-color !important;
+        color: @white !important;
+      }
+    }
+
+    &-error:not(.is-disabled, .ant-btn-link, .ant-btn-background-ghost) {
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: @button-error-active-color !important;
+        background-color: @button-error-active-color !important;
+        color: @white !important;
+      }
+    }
+  }
+}
+
+.ant-btn-primary {
+  background-color: @theme-color !important;
+  color: #fff;
+}
+
+.vben-multiple-tabs .ant-tabs.ant-tabs-card .ant-tabs-nav .ant-tabs-tab-active {
+  background: @theme-color !important;
+}
+
+.vben-app-logo.light .vben-app-logo__title {
+  color: @theme-color !important;
+}
+
+.vben-menu-light.vben-menu-vertical .vben-menu-item-active:not(.vben-menu-submenu) {
+  z-index: 2;
+  margin: 6px;
+  border-radius: 8px;
+  background-color: @theme-color !important;
+  color: white !important;
+}
+
+.vben-menu-light.vben-menu-vertical .vben-menu-item-active:not(.vben-menu-submenu)::after {
+  background-color: unset !important;
+}
+
+.vue-flow__node.vue-flow__node-default.nopan.draggable.selectable {
+  border: unset;
+  background: @theme-color;
+  color: white;
+}
+
+.vue-flow__node.vue-flow__node-default {
+  border: unset;
+  background: @theme-color;
+  color: white;
+}
+
+.vue-flow__handle {
+  opacity: 0;
+}
+
+span.ant-select-selection-placeholder {
+  display: flex;
+}
+
+:where(.css-dev-only-do-not-override-1yheyoc).ant-form-item
+.ant-form-item-label
+> label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
+  content: '*';
+  display: inline-block;
+  margin-inline-end: 4px;
+  color: #ed6f6f;
+  font-family: SimSun, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+}
+
+:where(.css-dev-only-do-not-override-1yheyoc).ant-form-item
+.ant-form-item-label
+> label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  content: unset;
+}
+
+.vben-basic-title {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: self-start !important;
+  padding-left: 7px;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ant-select-selection-item {
+  display: flex;
+}
+
+.ant-select.ant-select-sm.ant-select-in-form-item.ant-pagination-options-size-changer.ant-select-single.ant-select-show-arrow {
+  width: unset !important;
+}
+
+button.ant-btn.ant-btn-primary.is-disabled {
+  background-color: #d9d9d9 !important;
+}
+
+.ant-tabs-tab {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+  'Noto Color Emoji';
+  font-size: 14px !important;
+  line-height: 20px;
+}
+
+.vben-basic-table-form-container .ant-form {
+  margin-bottom: 1px !important;
+  padding: 1px !important;
+}
+
+.vben-basic-table-form-container {
+  padding: 1px !important;
+}
+
+.vben-basic-table .ant-table-wrapper {
+  padding: 1px !important;
+}
+
+.ant-card .ant-card-body {
+  padding: 12px;
+}
+
+.ant-form-vertical .ant-form-item-label {
+  padding: 0 0 1px;
+}

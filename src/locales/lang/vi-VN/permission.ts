@@ -1,0 +1,18 @@
+export default {
+  add: 'Thêm Vai Trò',
+  view: 'Xem Chi Tiết',
+  edit: 'Sửa',
+  delete: 'Xóa',
+  export: 'Xuất Excel',
+  code: 'Mã Vai Trò',
+  name: 'Tên Vai Trò',
+  status: 'Trạng Thái',
+  createdDate: 'Ngày Tạo',
+  createdBy: 'Người Tạo',
+  cancel: 'Hủy',
+  username: 'Tài khoản',
+  displayName: 'Tên',
+  email: 'Email',
+  addUserToRole: 'Thêm người dùng',
+  action: 'Thao tác',
+};
