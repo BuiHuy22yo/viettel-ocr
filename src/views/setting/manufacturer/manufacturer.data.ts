@@ -2,7 +2,7 @@ import { BasicColumn } from '@/components/Table';
 import { useI18n } from '@/hooks/web/useI18n';
 import { h } from 'vue';
 import { Tag } from 'ant-design-vue';
-import { searchCountry } from "@/api/setting/country";
+import { searchCountry } from '@/api/setting/country';
 
 const { t } = useI18n();
 export const columns: BasicColumn[] = [

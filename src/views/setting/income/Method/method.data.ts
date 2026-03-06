@@ -16,7 +16,7 @@ export const columns: BasicColumn[] = [
     width: 250,
   },
   {
-     title: t('form.setting.createdDate'),
+    title: t('form.setting.createdDate'),
     dataIndex: 'createdAt',
     key: 'createdAt',
     align: 'center',

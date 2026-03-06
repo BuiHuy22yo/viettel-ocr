@@ -3,7 +3,7 @@ import { h } from 'vue';
 import { Tag } from 'ant-design-vue';
 import { useI18n } from '@/hooks/web/useI18n';
 import { getAllGroupAttributes } from '@/api/setting/template';
-import {removeVietnameseTonesAndFormat} from "@/utils/helper/validatorForm";
+import { removeVietnameseTonesAndFormat } from '@/utils/helper/validatorForm';
 
 const { t } = useI18n();
 export const columns: BasicColumn[] = [
@@ -53,7 +53,6 @@ export const columns: BasicColumn[] = [
 ];
 
 export const formSchema: FormSchema[] = [
-
   {
     field: 'name',
     label: t('page.form.attributes.name'),

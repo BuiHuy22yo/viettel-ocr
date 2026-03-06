@@ -79,8 +79,7 @@
 
   const [registerDrawer, { openDrawer }] = useDrawer();
   const [registerTable, { setLoading }] = useTable({
-    title: t('' +
-      'form.setting.domain'),
+    title: t('' + 'form.setting.domain'),
     dataSource: dataSource,
     subTitle: t('form.setting.subTitleDomain'),
     icon: 'carbon:image-service',

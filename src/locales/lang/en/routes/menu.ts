@@ -53,4 +53,13 @@ export default {
   partnerEmployee: 'Partner Employee',
   rfq: 'RFQ/Bidding',
   transportation: 'Transportation',
+  ocrProcessing: 'OCR Processing',
+  humanReview: 'Human Review',
+  orderManagement: 'Order Management',
+  analytics: 'Analytics',
+  fraudDetection: 'Fraud Detection',
+  systemMonitoring: 'System Monitoring',
+  architectureDataFlow: 'Architecture & Data Flow',
+  apiKeys: 'API Keys',
+  apiDocs: 'API Docs',
 };

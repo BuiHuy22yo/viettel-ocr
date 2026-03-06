@@ -20,7 +20,7 @@ export const columns: BasicColumn[] = [
     dataIndex: 'incomeElementGroupName',
   },
   {
-     title: t('form.setting.createdDate'),
+    title: t('form.setting.createdDate'),
     dataIndex: 'createdAt',
     key: 'createdAt',
     align: 'center',

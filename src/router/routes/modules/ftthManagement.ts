@@ -36,7 +36,7 @@ const ftthManagements: any = [
       orderNo: 10,
       hideChildrenInMenu: true,
       icon: 'ion:scan-outline',
-      title: 'OCR Processing',
+      title: t('routes.menu.ocrProcessing'),
     },
     children: [
       {
@@ -45,7 +45,7 @@ const ftthManagements: any = [
         component: () => import('@/views/ocr-processing/index.vue'),
         meta: {
           icon: 'ion:scan-outline',
-          title: 'OCR Processing',
+          title: t('routes.menu.ocrProcessing'),
           hideMenu: true,
         },
       },
@@ -60,7 +60,7 @@ const ftthManagements: any = [
       orderNo: 20,
       hideChildrenInMenu: true,
       icon: 'ion:eye-outline',
-      title: 'Human Review',
+      title: t('routes.menu.humanReview'),
     },
     children: [
       {
@@ -69,8 +69,30 @@ const ftthManagements: any = [
         component: () => import('@/views/human-review/index.vue'),
         meta: {
           icon: 'ion:eye-outline',
-          title: 'Human Review',
+          title: t('routes.menu.humanReview'),
           hideMenu: true,
+        },
+      },
+    ],
+  },
+  {
+    path: '/human-review/:id',
+    name: 'ReviewDetail',
+    component: LAYOUT,
+    redirect: '/human-review/:id/index',
+    meta: {
+      hideChildrenInMenu: true,
+      hideMenu: true,
+      title: 'Review Detail',
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'ReviewDetailIndex',
+        component: () => import('@/views/review-detail/index.vue'),
+        meta: {
+          hideMenu: true,
+          title: 'Review Detail',
         },
       },
     ],
@@ -84,7 +106,7 @@ const ftthManagements: any = [
       orderNo: 30,
       hideChildrenInMenu: true,
       icon: 'ion:cube-outline',
-      title: 'Order Management',
+      title: t('routes.menu.orderManagement'),
     },
     children: [
       {
@@ -93,8 +115,30 @@ const ftthManagements: any = [
         component: () => import('@/views/order-management/index.vue'),
         meta: {
           icon: 'ion:cube-outline',
-          title: 'Order Management',
+          title: t('routes.menu.orderManagement'),
           hideMenu: true,
+        },
+      },
+    ],
+  },
+  {
+    path: '/order-management/:id',
+    name: 'OrderDetail',
+    component: LAYOUT,
+    redirect: '/order-management/:id/index',
+    meta: {
+      hideChildrenInMenu: true,
+      hideMenu: true,
+      title: 'Order Detail',
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'OrderDetailIndex',
+        component: () => import('@/views/order-detail/index.vue'),
+        meta: {
+          hideMenu: true,
+          title: 'Order Detail',
         },
       },
     ],
@@ -108,7 +152,7 @@ const ftthManagements: any = [
       orderNo: 40,
       hideChildrenInMenu: true,
       icon: 'ion:bar-chart-outline',
-      title: 'Analytics',
+      title: t('routes.menu.analytics'),
     },
     children: [
       {
@@ -117,7 +161,7 @@ const ftthManagements: any = [
         component: () => import('@/views/analytics/index.vue'),
         meta: {
           icon: 'ion:bar-chart-outline',
-          title: 'Analytics',
+          title: t('routes.menu.analytics'),
           hideMenu: true,
         },
       },
@@ -132,7 +176,7 @@ const ftthManagements: any = [
       orderNo: 50,
       hideChildrenInMenu: true,
       icon: 'ion:shield-half-outline',
-      title: 'Fraud Detection',
+      title: t('routes.menu.fraudDetection'),
     },
     children: [
       {
@@ -141,7 +185,7 @@ const ftthManagements: any = [
         component: () => import('@/views/fraud-detection/index.vue'),
         meta: {
           icon: 'ion:shield-half-outline',
-          title: 'Fraud Detection',
+          title: t('routes.menu.fraudDetection'),
           hideMenu: true,
         },
       },
@@ -156,7 +200,7 @@ const ftthManagements: any = [
       orderNo: 60,
       hideChildrenInMenu: true,
       icon: 'ion:pulse-outline',
-      title: 'System Monitoring',
+      title: t('routes.menu.systemMonitoring'),
     },
     children: [
       {
@@ -165,7 +209,7 @@ const ftthManagements: any = [
         component: () => import('@/views/system-monitoring/index.vue'),
         meta: {
           icon: 'ion:pulse-outline',
-          title: 'System Monitoring',
+          title: t('routes.menu.systemMonitoring'),
           hideMenu: true,
         },
       },
@@ -180,7 +224,7 @@ const ftthManagements: any = [
       orderNo: 70,
       hideChildrenInMenu: true,
       icon: 'ion:git-network-outline',
-      title: 'Architecture & Data Flow',
+      title: t('routes.menu.architectureDataFlow'),
     },
     children: [
       {
@@ -189,7 +233,7 @@ const ftthManagements: any = [
         component: () => import('@/views/architecture-data-flow/index.vue'),
         meta: {
           icon: 'ion:git-network-outline',
-          title: 'Architecture & Data Flow',
+          title: t('routes.menu.architectureDataFlow'),
           hideMenu: true,
         },
       },
@@ -204,7 +248,7 @@ const ftthManagements: any = [
       orderNo: 80,
       hideChildrenInMenu: true,
       icon: 'ion:key-outline',
-      title: 'API Management',
+      title: t('routes.menu.apiKeys'),
     },
     children: [
       {
@@ -213,7 +257,7 @@ const ftthManagements: any = [
         component: () => import('@/views/api-management/index.vue'),
         meta: {
           icon: 'ion:key-outline',
-          title: 'API Management',
+          title: t('routes.menu.apiKeys'),
           hideMenu: true,
         },
       },
@@ -228,7 +272,7 @@ const ftthManagements: any = [
       orderNo: 90,
       hideChildrenInMenu: true,
       icon: 'ion:book-outline',
-      title: 'API Docs',
+      title: t('routes.menu.apiDocs'),
     },
     children: [
       {
@@ -237,7 +281,7 @@ const ftthManagements: any = [
         component: () => import('@/views/api-docs/index.vue'),
         meta: {
           icon: 'ion:book-outline',
-          title: 'API Docs',
+          title: t('routes.menu.apiDocs'),
           hideMenu: true,
         },
       },

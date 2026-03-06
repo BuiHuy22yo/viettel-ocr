@@ -45,4 +45,13 @@ export default {
   importExportStockType: 'Loại xuất - nhập kho',
   quote: 'Chào giá',
   deliveryWorkflow: 'Quy Trình Vận Chuyển',
+  ocrProcessing: 'Xử lý OCR',
+  humanReview: 'Duyệt thủ công',
+  orderManagement: 'Quản lý đơn hàng',
+  analytics: 'Phân tích',
+  fraudDetection: 'Phát hiện gian lận',
+  systemMonitoring: 'Giám sát hệ thống',
+  architectureDataFlow: 'Kiến trúc & Luồng dữ liệu',
+  apiKeys: 'Khóa API',
+  apiDocs: 'Tài liệu API',
 };

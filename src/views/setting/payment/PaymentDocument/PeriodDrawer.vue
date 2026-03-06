@@ -51,8 +51,8 @@
   });
 
   const getTitle = computed(() =>
-    !unref(isUpdate) ?
-      t('paymentSetting.paymentDocument.createDocument')
+    !unref(isUpdate)
+      ? t('paymentSetting.paymentDocument.createDocument')
       : t('paymentSetting.paymentDocument.updateDocument'),
   );
 

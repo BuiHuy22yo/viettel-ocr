@@ -55,7 +55,7 @@
   import UnitDrawer from './StationDrawer.vue';
 
   import { columns } from './station.data';
-  import { deleteStation, getAllStation} from '@/api/setting/org';
+  import { deleteStation, getAllStation } from '@/api/setting/org';
   import { formatToDateTime } from '@/utils/dateUtil';
   import { message } from 'ant-design-vue';
   import { useI18n } from '@/hooks/web/useI18n';

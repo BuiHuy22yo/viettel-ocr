@@ -91,6 +91,5 @@
     imgList.value.push(`${new Date().getTime()}.png`);
   }
 
-  async function fireAjaxError() {
-  }
+  async function fireAjaxError() {}
 </script>

@@ -15,7 +15,7 @@
   import { BasicForm, useForm } from '@/components/Form';
   import { formSchema } from './station.data';
   import { BasicDrawer, useDrawerInner } from '@/components/Drawer';
-  import { createStation, updateStation} from '@/api/setting/org';
+  import { createStation, updateStation } from '@/api/setting/org';
   import { message } from 'ant-design-vue';
   import { useI18n } from '@/hooks/web/useI18n';
 

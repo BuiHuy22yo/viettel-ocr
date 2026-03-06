@@ -16,7 +16,10 @@
   import { formSchema } from './ExtraDataDetail.data';
   import { BasicDrawer, useDrawerInner } from '@/components/Drawer';
   import { message } from 'ant-design-vue';
-  import { createTemplateExtraDataDetail, updateTemplateExtraDataDetail } from '@/api/setting/template';
+  import {
+    createTemplateExtraDataDetail,
+    updateTemplateExtraDataDetail,
+  } from '@/api/setting/template';
   import { useI18n } from '@/hooks/web/useI18n';
 
   const { t } = useI18n();

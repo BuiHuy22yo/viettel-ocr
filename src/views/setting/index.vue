@@ -164,9 +164,7 @@
   );
   const ImportExportStockType = defineAsyncComponent(
     () =>
-      import(
-        '@/views/setting/stock/components/import-export-stock-type/import-export-stock-type-index.vue'
-      ),
+      import('@/views/setting/stock/components/import-export-stock-type/import-export-stock-type-index.vue'),
   );
   const StockTypeCategory = defineAsyncComponent(
     () =>

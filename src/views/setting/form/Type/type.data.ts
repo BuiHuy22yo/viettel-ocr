@@ -2,7 +2,7 @@ import { BasicColumn, FormSchema } from '@/components/Table';
 import { h } from 'vue';
 import { Tag } from 'ant-design-vue';
 import { useI18n } from '@/hooks/web/useI18n';
-import {removeVietnameseTones} from "@/utils/helper/validatorForm";
+import { removeVietnameseTones } from '@/utils/helper/validatorForm';
 
 const { t } = useI18n();
 export const columns: BasicColumn[] = [
@@ -52,7 +52,6 @@ export const columns: BasicColumn[] = [
 ];
 
 export const formSchema: FormSchema[] = [
-
   {
     field: 'name',
     label: t('page.form.type.name'),

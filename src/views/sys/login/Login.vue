@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="prefixCls"
-    class="relative w-full h-full py-5 xl:py-4 xl:my-0"
-
-  >
+  <div :class="prefixCls" class="relative w-full h-full py-5 xl:py-4 xl:my-0">
     <div class="flex items-center absolute right-4 top-4">
       <AppDarkModeToggle class="enter-x mr-2" v-if="!sessionTimeout" />
       <AppLocalePicker
@@ -17,8 +13,8 @@
       <AppLogo :alwaysShowTitle="true" />
     </span>
 
-    <div class="relative h-full overflow-auto">
-      <div class="flex h-full">
+    <div class="relative h-full overflow-auto text-center">
+      <div class="flex h-full w-full max-w-sm mx-auto">
         <div class="flex w-full justify-center align-center">
           <div
             :class="`${prefixCls}-form`"
@@ -180,9 +176,9 @@
     .@{prefix-cls} {
       background-color: @dark-bg;
 
-      &::before {
-        background-image: url('@/assets/svg/login-bg-dark.svg');
-      }
+      //&::before {
+      //  background-image: url('@/assets/svg/login-bg-dark.svg');
+      //}
 
       .ant-input,
       .ant-input-password {
@@ -252,23 +248,23 @@
       color: white !important;
     }
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      margin-left: -48%;
-      //background-image: url('@/assets/svg/login-bg.svg');
-      //background-repeat: no-repeat;
-      //background-position: 100%;
-      //background-size: auto 100%;
-
-      @media (max-width: @screen-xl) {
-        display: none;
-      }
-    }
+    //&::before {
+    //  content: '';
+    //  position: absolute;
+    //  top: 0;
+    //  left: 0;
+    //  width: 100%;
+    //  height: 100%;
+    //  margin-left: -48%;
+    //  //background-image: url('@/assets/svg/login-bg.svg');
+    //  //background-repeat: no-repeat;
+    //  //background-position: 100%;
+    //  //background-size: auto 100%;
+    //
+    //  @media (max-width: @screen-xl) {
+    //    display: none;
+    //  }
+    //}
 
     .@{logo-prefix-cls} {
       position: absolute;

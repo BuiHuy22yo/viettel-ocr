@@ -92,7 +92,7 @@
     //   width: 80,
     //   title: 'Action',
     //   dataIndex: 'action',
-      align: 'center',
+    align: 'center',
     //   // slots: { customRender: 'action' },
     //   fixed: 'right',
     // },

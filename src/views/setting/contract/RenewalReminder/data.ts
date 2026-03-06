@@ -19,13 +19,13 @@ export const columns: BasicColumn[] = [
     dataIndex: 'renewal',
   },
   {
-     title: t('form.setting.createdDate'),
+    title: t('form.setting.createdDate'),
     dataIndex: 'createdAt',
     key: 'createdAt',
     align: 'center',
   },
   {
-     title: t('form.setting.createdDate'),
+    title: t('form.setting.createdDate'),
     dataIndex: 'createdAt',
     key: 'createdAt',
     align: 'center',
